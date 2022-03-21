@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="doctorsList col-6">
+      <div class="card col-12 p-0" *ngFor="let doctor of doctors">
+        <div class="card-body">
+          <h3 class="card-title">
+            #{{ doctor.id }} {{ doctor.name }} <button class="btn btn-info btn-sm" type="button" (click)="onSelect(doctor)">Show Tasks <i class="bi bi-chevron-double-right"></i></button>
+          </h3>
+          <p class="card-text">
+            <span class="username">
+              <i class="bi bi-person-check"></i>
+              {{ doctor.username }}
+            </span>
+            <span>
+              <i class="bi bi-envelope"></i>
+              <a
+                href="mailto:{{ doctor.email }}"
+                class="email"
+              >
+                {{ doctor.email }}
+              </a>
+            </span>
+            <span>
+              <i class="bi bi-telephone"></i>
+              <a href="tel:{{ doctor.phone }}" class="phone">
+                {{ doctor.phone }}
+              </a>
+            </span>
+            <span>
+              <i class="bi bi-globe"></i>
+              <a
+                href="https://{{ doctor.website }}"
+                class="website"
+                target="_blank"
+              >
+                {{ doctor.website }}
+              </a>
+            </span>
+            <span class="address">
+              <span>
+                <i class="bi bi-pin-map"></i>
+                {{ doctor.street }}{{ doctor.suite }}
+              </span>
+              <span>
+                <i class="bi bi-pin-map"></i>
+                {{ doctor.zipcode }} {{ doctor.city }}
+              </span>
+              <span>
+                <i class="bi bi-pin-map"></i>
+                <a
+                  href="https://www.google.com/maps?q={{
+                    doctor.lat
+                  }},{{ doctor.lng }}"
+                  target="_blank"
+                >
+                  Show on map
+                </a>
+              </span>
+            </span>
+            <span class="company">
+              <span>
+                <i class="bi bi-building"></i>
+                {{ doctor.companyname }}
+              </span>
+              <span class="phrase">
+                {{ doctor.catchPhrase }}
+              </span>
+              <span class="bs">
+                {{ doctor.bs }}
+              </span>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="tasksList col-6">
+      <app-doctor-tasks [doctor]="selectedDoctor"></app-doctor-tasks>
+    </div>
+  </div>
+</div>
