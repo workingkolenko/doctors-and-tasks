@@ -39,18 +39,18 @@
             <span class="address">
               <span>
                 <i class="bi bi-pin-map"></i>
-                {{ doctor.street }}{{ doctor.suite }}
+                {{ doctor.address.street }}{{ doctor.address.suite }}
               </span>
               <span>
                 <i class="bi bi-pin-map"></i>
-                {{ doctor.zipcode }} {{ doctor.city }}
+                {{ doctor.address.zipcode }} {{ doctor.address.city }}
               </span>
               <span>
                 <i class="bi bi-pin-map"></i>
                 <a
                   href="https://www.google.com/maps?q={{
-                    doctor.lat
-                  }},{{ doctor.lng }}"
+                    doctor.address.geo.lat
+                  }},{{ doctor.address.geo.lng }}"
                   target="_blank"
                 >
                   Show on map
@@ -60,13 +60,13 @@
             <span class="company">
               <span>
                 <i class="bi bi-building"></i>
-                {{ doctor.companyname }}
+                {{ doctor.company.name }}
               </span>
               <span class="phrase">
-                {{ doctor.catchPhrase }}
+                {{ doctor.company.catchPhrase }}
               </span>
               <span class="bs">
-                {{ doctor.bs }}
+                {{ doctor.company.bs }}
               </span>
             </span>
           </p>

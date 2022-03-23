@@ -1,17 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Doctor } from './doctor';
-import { DOCTORS } from './mock-doctors';
-import { Observable, of } from 'rxjs';
+import { Injectable } from '@angular/core'
+import { Doctor } from './doctor'
+import { Observable } from 'rxjs'
+import { HttpClient } from '@angular/common/http'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DoctorService {
+  private doctorURL = 'https://jsonplaceholder.typicode.com/users';
+  private tasksURL = 'https://jsonplaceholder.typicode.com/todos';
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
 
   getDoctors(): Observable<Doctor[]> {
-    const doctors = of(DOCTORS);
-    return doctors;
+    return this.http.get<Doctor[]>(this.doctorURL)
+  }
+
+  getTasks(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.tasksURL)
   }
 }
