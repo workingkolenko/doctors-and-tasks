@@ -1,25 +1,31 @@
-routing
-<div *ngIf="doctor">
-  <div>
-    <h4>{{ doctor.name }}'s Tasks:</h4>
-    <table class="table table-hover table-bordered">
-      <thead>
-        <tr>
-          <th scope="col" class="text-center">#</th>
-          <th scope="col">Title</th>
-          <th scope="col" class="text-center">Status</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let task of tasks">
-        <tr *ngIf="doctor.id == task.userId">
-          <th class="text-center">{{ task.id }}</th>
-          <td>{{ task.title | titlecase }}</td>
-          <td class="text-center link-success" *ngIf="task.completed; else notDone"><i class="bi bi-hand-thumbs-up-fill"></i></td>
-          <ng-template #notDone>
-            <td class="text-center link-danger"><i class="bi bi-hand-thumbs-down-fill"></i></td>
-          </ng-template>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="tasksList col-6">
+  <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">Title</th>
+        <th scope="col" class="text-center">Status</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let task of tasks">
+      <tr>
+        <th class="text-center">{{ task.id }}</th>
+        <td>{{ task.title | titlecase }}</td>
+        <td
+          class="text-center link-success"
+          *ngIf="task.completed; else notDone"
+        >
+          <i class="bi bi-hand-thumbs-up-fill"></i>
+        </td>
+        <ng-template #notDone>
+          <td class="text-center link-danger">
+            <i class="bi bi-hand-thumbs-down-fill"></i>
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-info btn-sm" type="button" (click)="goBack()">
+    Back to doctors
+  </button>
 </div>

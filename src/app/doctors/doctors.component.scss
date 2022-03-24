@@ -1,8 +1,8 @@
 .card {
     border: none;
-    border-bottom: 1px dotted #ccc;
-    // outline: 1px solid #f2f2f2;
-    // box-shadow: 0 0 30px #f2f2f2;
+    // border-bottom: 1px dotted #ccc;
+    outline: 1px solid #f2f2f2;
+    box-shadow: 0 0 30px #f2f2f2;
     border-radius: 0;
 
     .card-body {
@@ -39,15 +39,4 @@
     i {
         margin-right: 0.25rem;
     } 
-}
-
-.doctorsList {
-    overflow-y: scroll;
-    height: 100vh;
-}
-
-.tasksList {
-    margin-top: 2rem;
-    overflow-y: scroll;
-    height: 100vh;
 }
