@@ -5,7 +5,7 @@ import { DoctorTasksComponent } from './doctor-tasks/doctor-tasks.component';
 
 const routes: Routes = [
   { path: '', component: DoctorsComponent },
-  { path: 'tasks/:id', component: DoctorTasksComponent }
+  { path: 'doctor/:id', component: DoctorTasksComponent }
 ];
 
 @NgModule({
