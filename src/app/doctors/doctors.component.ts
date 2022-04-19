@@ -15,7 +15,6 @@ export class DoctorsComponent implements OnInit {
 
   constructor(
     private doctorService: DoctorService,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
