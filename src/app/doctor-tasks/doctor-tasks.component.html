@@ -7,7 +7,7 @@
         <th scope="col" class="text-center">Status</th>
       </tr>
     </thead>
-    <tbody *ngFor="let task of tasks">
+    <tbody *ngFor="let task of (tasks$ | async)">
       <tr>
         <th class="text-center">{{ task.id }}</th>
         <td>{{ task.title | titlecase }}</td>

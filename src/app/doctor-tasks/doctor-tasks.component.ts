@@ -5,6 +5,7 @@ import { Doctor } from '../doctor';
 import { DoctorService } from '../doctor.service';
 import { Task } from '../task';
 import { TaskService } from '../task.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-doctor-tasks',
@@ -12,8 +13,8 @@ import { TaskService } from '../task.service';
   styleUrls: ['./doctor-tasks.component.scss'],
 })
 export class DoctorTasksComponent implements OnInit {
-  tasks: Task[] = [];
-  doctors: Doctor[] = [];
+  doctors$: Observable<Doctor[]> | undefined;
+  tasks$: Observable<Task[]> | undefined;
 
   constructor(
     private taskService: TaskService,
@@ -28,13 +29,13 @@ export class DoctorTasksComponent implements OnInit {
   }
 
   getDoctors(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'))
-    this.doctorService.getDoctors().subscribe((doctors) => (this.doctors = doctors));
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.doctors$ = this.doctorService.getDoctors(id);
   }
 
   getTasks(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.taskService.getTasks(id).subscribe(tasks => this.tasks = tasks);
+    this.tasks$ = this.taskService.getTasks(id);
   }
 
   goBack(): void {

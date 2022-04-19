@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="card col-4 p-0" *ngFor="let doctor of doctors">
+  <div class="card col-4 p-0" *ngFor="let doctor of (doctors$ | async)">
     <div class="card-body">
       <h3 class="card-title">
         #{{ doctor.id }} {{ doctor.name }}
