@@ -29,8 +29,7 @@ export class DoctorTasksComponent implements OnInit {
   }
 
   getDoctors(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.doctors$ = this.doctorService.getDoctors(id);
+    this.doctors$ = this.doctorService.getDoctors();
   }
 
   getTasks(): void {
