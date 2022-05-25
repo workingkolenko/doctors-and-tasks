@@ -29,7 +29,7 @@ export class DoctorTasksComponent implements OnInit {
   }
 
   getDoctors(): void {
-    this.doctors$ = this.doctorService.getDoctors();
+    this.doctors$ = this.doctorService.getAllDoctors();
   }
 
   getTasks(): void {
