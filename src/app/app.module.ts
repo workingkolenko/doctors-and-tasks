@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorTasksComponent } from './doctor-tasks/doctor-tasks.component';
+import { DoctorEditComponent } from './doctors/doctor-edit/doctor-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DoctorsComponent,
-    DoctorTasksComponent
+    DoctorTasksComponent,
+    DoctorEditComponent
   ],
   imports: [
     BrowserModule,

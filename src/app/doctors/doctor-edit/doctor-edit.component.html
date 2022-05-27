@@ -1,26 +1,7 @@
 <div class="row">
-  <div class="card col-4 p-0" *ngFor="let doctor of doctors$ | async">
+  <div class="card col-4 p-0" *ngFor="let doctor of doctor$ | async">
     <div class="card-body">
-      <h3 class="card-title">
-        #{{ doctor.id }} {{ doctor.name }}
-        <button
-          class="btn btn-info btn-sm"
-          type="button"
-          routerLink="/doctor/{{ doctor.id }}"
-        >
-          Show Tasks
-          <i class="bi bi-chevron-double-right"></i>
-        </button>
-        <button
-          class="btn btn-link btn-sm ms-1"
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
-          <!-- routerLink="/doctor/{{ doctor.id }}/edit" -->
-          <i class="bi bi-pencil me-0"></i>
-        </button>
-      </h3>
+      <h3 class="card-title">#{{ doctor.id }} {{ doctor.name }}</h3>
       <p class="card-text">
         <span class="username">
           <i class="bi bi-person-check"></i>
@@ -82,37 +63,6 @@
           </span>
         </span>
       </p>
-    </div>
-  </div>
-</div>
-
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit doctor's data</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <app-doctor-edit [doctor$]="doctors$"></app-doctor-edit>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
 </div>

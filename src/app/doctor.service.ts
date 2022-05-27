@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Doctor } from './doctor';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map, shareReplay } from 'rxjs/operators';
+import { DoctorStore } from './doctor.store';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +11,11 @@ import { HttpClient } from '@angular/common/http';
 export class DoctorService {
   private doctorURL = 'https://jsonplaceholder.typicode.com/users';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient
+    ) {}
 
-  getDoctors(): Observable<Doctor[]> {
+  getAllDoctors(): Observable<Doctor[]> {
     return this.http.get<Doctor[]>(this.doctorURL);
   }
 }

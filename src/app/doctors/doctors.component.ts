@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Doctor } from '../doctor';
-import { DoctorService } from '../doctor.service';
+import { DoctorStore } from '../doctor.store';
 
 @Component({
   selector: 'app-doctors',
@@ -11,10 +10,10 @@ import { DoctorService } from '../doctor.service';
 })
 export class DoctorsComponent implements OnInit {
 
-  doctors$: Observable<Doctor[]> | any;
+  doctors$: Observable<Doctor[]> | undefined;
 
   constructor(
-    private doctorService: DoctorService,
+    private doctorStore: DoctorStore
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +21,6 @@ export class DoctorsComponent implements OnInit {
   }
 
   getDoctors(): void {
-    this.doctors$ = this.doctorService.getDoctors();
+    this.doctors$ = this.doctorStore.getDoctorsObservable();
   }
 }
