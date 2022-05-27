@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Doctor } from '../doctor';
 import { DoctorStore } from '../doctor.store';
 
@@ -10,7 +10,7 @@ import { DoctorStore } from '../doctor.store';
 })
 export class DoctorsComponent implements OnInit {
 
-  doctors$: Observable<Doctor[]> | any;
+  doctors$: Observable<Doctor[]> | undefined;
 
   constructor(
     private doctorStore: DoctorStore
@@ -18,10 +18,9 @@ export class DoctorsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDoctors();
-    console.log(this.doctors$)
   }
 
   getDoctors(): void {
-    this.doctors$ = this.doctorStore.showAll();
+    this.doctors$ = this.doctorStore.getDoctorsObservable();
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+import { tap } from "rxjs/operators";
 import { Doctor } from "./doctor";
 
 @Injectable({
@@ -9,25 +9,24 @@ import { Doctor } from "./doctor";
 })
 export class DoctorStore {
 
-    private doctorURL = 'https://jsonplaceholder.typicode.com/users';
+    private dataUrl = 'https://jsonplaceholder.typicode.com/users';
 
-    private subject = new BehaviorSubject<Doctor[]>([]);
+    private doctorsSubject = new BehaviorSubject<Doctor[]>([]);
 
-    doctors$: Observable<Doctor[]> = this.subject.asObservable();
+    private doctors$: Observable<Doctor[]> = this.doctorsSubject.asObservable();
 
     constructor(private http: HttpClient) {
-        // this.loadAllDoctors();
+        this.loadAllDoctors();
+    }
+
+    getDoctorsObservable(): Observable<Doctor[]> {
+        return this.doctors$;
     }
 
     private loadAllDoctors() {
-        this.http.get<Doctor[]>(this.doctorURL)
+        this.http.get<Doctor[]>(this.dataUrl)
             .pipe(
-                map(response => response),
-                tap(doctor => this.subject.next(doctor))
-            )
-    }
-
-    showAll(): Observable<Doctor[]> {
-        return this.doctors$;
+                tap(doctors => this.doctorsSubject.next(doctors))
+            ).subscribe();
     }
 }
