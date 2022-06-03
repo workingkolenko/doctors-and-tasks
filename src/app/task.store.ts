@@ -1,8 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { filter, map, tap } from "rxjs/operators";
-import { Doctor } from "./doctor";
+import { tap } from "rxjs/operators";
 import { Task } from "./task";
 
 @Injectable({
@@ -28,7 +27,7 @@ export class TaskStore {
         this.http.get<Task[]>(this.dataUrl)
             .pipe(
                 tap(tasks => this.tasksSubject.next(tasks)),
-                tap(response => console.log(response))
+                // tap(response => console.log(response))
             ).subscribe();
     }
 }

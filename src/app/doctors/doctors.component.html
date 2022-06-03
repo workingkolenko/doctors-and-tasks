@@ -14,10 +14,10 @@
         <button
           class="btn btn-link btn-sm ms-1"
           type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
+          routerLink="/doctor/{{ doctor.id }}/edit"
         >
-          <!-- routerLink="/doctor/{{ doctor.id }}/edit" -->
+          <!-- data-bs-toggle="modal"
+          data-bs-target="#exampleModal" -->
           <i class="bi bi-pencil me-0"></i>
         </button>
       </h3>
@@ -86,7 +86,7 @@
   </div>
 </div>
 
-<div
+<!-- <div
   class="modal fade"
   id="exampleModal"
   tabindex="-1"
@@ -115,4 +115,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

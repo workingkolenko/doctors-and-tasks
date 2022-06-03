@@ -1,68 +1,75 @@
 <div class="row">
-  <div class="card col-4 p-0" *ngFor="let doctor of doctor$ | async">
+  <div
+    class="card col-4 offset-lg-4 p-0"
+    *ngFor="let doctor of doctor$ | async"
+  >
     <div class="card-body">
       <h3 class="card-title">#{{ doctor.id }} {{ doctor.name }}</h3>
-      <p class="card-text">
-        <span class="username">
+      <small>Click and edit. Simple as that.</small>
+      <hr />
+      <div class="card-text">
+        <div class="username">
           <i class="bi bi-person-check"></i>
-          {{ doctor.username }}
-        </span>
-        <span>
+          <span contenteditable>
+            {{ doctor.username }}
+          </span>
+        </div>
+        <div>
           <i class="bi bi-envelope"></i>
-          <a href="mailto:{{ doctor.email }}" class="email">
-            {{ doctor.email }}
-          </a>
-        </span>
-        <span>
+          <span contenteditable>{{ doctor.email }}</span>
+        </div>
+        <div>
           <i class="bi bi-telephone"></i>
-          <a href="tel:{{ doctor.phone }}" class="phone">
+          <span contenteditable>
             {{ doctor.phone }}
-          </a>
-        </span>
-        <span>
+          </span>
+        </div>
+        <div>
           <i class="bi bi-globe"></i>
-          <a
-            href="https://{{ doctor.website }}"
-            class="website"
-            target="_blank"
-          >
-            {{ doctor.website }}
-          </a>
-        </span>
-        <span class="address">
+          <span contenteditable>{{ doctor.website }}</span>
+        </div>
+        <div class="address">
           <span>
             <i class="bi bi-pin-map"></i>
-            {{ doctor.address.street }}{{ doctor.address.suite }}
-          </span>
+            <span contenteditable>
+              {{ doctor.address.street }}{{ doctor.address.suite }}
+            </span>
+          </span><br>
           <span>
             <i class="bi bi-pin-map"></i>
-            {{ doctor.address.zipcode }} {{ doctor.address.city }}
+            <span contenteditable>
+              {{ doctor.address.zipcode }} {{ doctor.address.city }}
+            </span>
           </span>
-          <span>
-            <i class="bi bi-pin-map"></i>
-            <a
-              href="https://www.google.com/maps?q={{
-                doctor.address.geo.lat
-              }},{{ doctor.address.geo.lng }}"
-              target="_blank"
-            >
-              Show on map
-            </a>
-          </span>
-        </span>
-        <span class="company">
+        </div>
+        <div class="company">
           <span>
             <i class="bi bi-building"></i>
-            {{ doctor.company.name }}
-          </span>
+            <span contenteditable>{{ doctor.company.name }}</span>
+          </span><br>
           <span class="phrase">
-            {{ doctor.company.catchPhrase }}
-          </span>
+            <span contenteditable>{{ doctor.company.catchPhrase }}</span>
+          </span><br>
           <span class="bs">
-            {{ doctor.company.bs }}
+            <span contenteditable>{{ doctor.company.bs }}</span>
           </span>
-        </span>
-      </p>
+        </div>
+      </div>
+      
+      <button
+        class="btn btn-link btn-sm float-end"
+        type="button"
+        (click)="goBack()"
+      >
+        Cancel
+      </button>
+      <button
+        class="btn btn-info btn-sm float-end"
+        type="button"
+        (click)="onSave()"
+      >
+        Save
+      </button>
     </div>
   </div>
 </div>
